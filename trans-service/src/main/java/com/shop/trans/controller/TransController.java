@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shop.base.controller.BaseController;
 
-@RequestMapping("/trans")
 @RestController
+@RequestMapping("/trans")
 public class TransController extends BaseController{
     
     @Value("${trans.name}")
