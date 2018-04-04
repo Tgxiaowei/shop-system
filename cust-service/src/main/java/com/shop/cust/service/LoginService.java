@@ -10,6 +10,6 @@ public interface LoginService {
 
     LoginResp login(LoginReq req);
 
-    boolean sendMsg();
+    boolean sendMsg(String mobile);
 
 }

@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.shop</groupId>
-	<artifactId>cust-service</artifactId>
+	<artifactId>redis-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>cust-service</name>
+	<name>redis-service</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -21,11 +21,6 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>com.shop</groupId>
-			<artifactId>feign-client</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
@@ -36,19 +31,13 @@
 			<artifactId>spring-tx</artifactId>
 			<version>4.3.14.RELEASE</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
-		<!-- <dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-			<version>4.2.3.RELEASE</version>
-		</dependency> -->
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
-		<!-- <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>4.3.14.RELEASE</version>
-		</dependency> -->
-
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>1.5.9.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -67,7 +56,7 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Camden.SR3</version>
+				<version>Camden.SR2</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

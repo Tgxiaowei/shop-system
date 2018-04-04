@@ -103,6 +103,15 @@ public class Assert {
     /**
      * array至少包含一个元素，否则抛出BizException
      */
+    public static void notEmpty(String str, String message) {
+        if (StringUtils.isEmpty(str)) {
+            throw new BizException(message);
+        }
+    }
+
+    /**
+     * array至少包含一个元素，否则抛出BizException
+     */
     public static void notEmpty(Object[] array, String message) {
         if (ObjectUtils.isEmpty(array)) {
             throw new BizException(message);

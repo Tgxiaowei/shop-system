@@ -1,4 +1,4 @@
-package com.shop.base.redis;
+package com.shop.redis.client;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,7 +59,7 @@ public class RedisClient {
         }
     }
 
-    public <T> T get(String key, T t) {
+    public <T> T getObj(String key, T t) {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();

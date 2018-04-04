@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class UUIDUtil {
 
-    public String getUUID() {
+    public static String getUUID() {
         return UUID.randomUUID().toString().replace("-", "");
     }
 
