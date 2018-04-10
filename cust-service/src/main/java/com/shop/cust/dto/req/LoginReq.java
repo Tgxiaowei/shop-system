@@ -17,6 +17,14 @@ public class LoginReq implements Serializable {
     private String            psw;
     private String            msgCode;
 
+    public LoginReq() {
+    }
+
+    public LoginReq(String mobile, String psw) {
+        this.mobile = mobile;
+        this.psw = psw;
+    }
+
     public String getMobile() {
         return mobile;
     }

@@ -2,11 +2,11 @@ package com.shop.base.enums;
 
 public enum CustStatusEnum {
 
-    normal(0, "normal", "正常"),
+    NORMAL(0, "normal", "正常"),
 
-    freeze(1, "freeze", "冻结"),
+    FREEZE(1, "freeze", "冻结"),
 
-    byebye(9, "byebye", "永久冻结"),
+    BYEBYE(9, "byebye", "永久冻结"),
 
     ;
     private int    index;

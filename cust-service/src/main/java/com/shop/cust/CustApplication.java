@@ -7,9 +7,11 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableEurekaClient
-//@ComponentScan(basePackages = "com.shop")
+//@ComponentScan(basePackageClasses = CustApplication.class)
+@ComponentScan(basePackages = "com.shop.feign")
+//@EnableFeignClients(basePackages = "com.shop")
 // 再试试上面这个扫描com.shop包
-@ComponentScan(basePackages = "com.cloud")
+//@ComponentScan(basePackages = "com.cloud")
 public class CustApplication {
 
     public static void main(String[] args) {

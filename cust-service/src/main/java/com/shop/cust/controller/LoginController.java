@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shop.base.dto.Result;
 import com.shop.cust.dto.req.LoginReq;
+import com.shop.cust.dto.req.RegisterReq;
 import com.shop.cust.dto.resp.LoginResp;
 import com.shop.cust.service.LoginService;
 import com.shop.feign.client.RedisClient;
@@ -29,6 +30,17 @@ public class LoginController {
 
     @Autowired
     private RedisClient   redisClient;
+
+    @PostMapping("/register")
+    public Result<LoginResp> register(@RequestBody @Valid RegisterReq req,
+                                      BindingResult bindingResult) {
+
+        logger.info("客户注册，req={}", req);
+        LoginResp resp = loginService.register(req);
+        logger.info("客户{}注册结果，resp={}", req.getMobile(), resp);
+
+        return Result.success(resp);
+    }
 
     @PostMapping("/login")
     public Result<LoginResp> login(@RequestBody @Valid LoginReq req, BindingResult bindingResult) {

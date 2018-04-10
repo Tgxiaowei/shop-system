@@ -2,19 +2,38 @@ package com.shop.cust.dao;
 
 import java.util.Date;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.shop.base.dao.BaseDAO;
 
+@Table(name = "t_cust_customer")
 public class CustDAO extends BaseDAO {
 
     private static final long serialVersionUID = 1L;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long              id;
+    /** 客户号 */
+    private String            custNo;
+    /** 手机号 */
+    @Length(min = 11, max = 11, message = "请输入正确的手机号码！")
     private String            mobile;
+    /** 姓名 */
     private String            name;
+    /** 性别 */
     private String            sex;
+    /** 登录密码 */
     private String            loginPsw;
+    /** 交易密码 */
     private String            payPsw;
+    /** 邮箱 */
     private String            mail;
+    /** 客户状态 */
     private Integer           status;
     private Date              gmt_create;
     private Date              gmt_modified;
@@ -25,6 +44,14 @@ public class CustDAO extends BaseDAO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCustNo() {
+        return custNo;
+    }
+
+    public void setCustNo(String custNo) {
+        this.custNo = custNo;
     }
 
     public String getMobile() {
@@ -101,9 +128,10 @@ public class CustDAO extends BaseDAO {
 
     @Override
     public String toString() {
-        return "CustDAO [id=" + id + ", mobile=" + mobile + ", name=" + name + ", sex=" + sex
-               + ", loginPsw=" + loginPsw + ", payPsw=" + payPsw + ", mail=" + mail + ", status="
-               + status + ", gmt_create=" + gmt_create + ", gmt_modified=" + gmt_modified + "]";
+        return "CustDAO [id=" + id + ", custNo=" + custNo + ", mobile=" + mobile + ", name=" + name
+               + ", sex=" + sex + ", loginPsw=" + loginPsw + ", payPsw=" + payPsw + ", mail="
+               + mail + ", status=" + status + ", gmt_create=" + gmt_create + ", gmt_modified="
+               + gmt_modified + "]";
     }
 
 }

@@ -8,7 +8,7 @@ public class CacheKeyConstant {
     /** token缓存     key = this+mobile */
     public static final String token         = CUST_PREFIX + DataDict.token;
     /** 注册短信验证码缓存     key = this+mobile */
-    public static final String registMsg     = CUST_PREFIX + DataDict.regist;
+    public static final String registMsg     = CUST_PREFIX + DataDict.register;
     /** 登陆短信验证码缓存     key = this+mobile */
     public static final String loginMsg      = CUST_PREFIX + DataDict.login;
     /** 重置登录密码短信验证码缓存     key = this+mobile */

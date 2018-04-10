@@ -9,6 +9,15 @@ public class LoginResp implements Serializable {
     private String            token;
     private String            name;
 
+    public LoginResp() {
+
+    }
+
+    public LoginResp(String token, String name) {
+        this.token = token;
+        this.name = name;
+    }
+
     public String getToken() {
         return token;
     }

@@ -1,10 +1,11 @@
 package com.shop.base.enums;
 
 import com.shop.base.constant.DataDict;
+import com.shop.base.exception.BizException;
 
 public enum MsgSendEnum {
 
-    REGIST(1, DataDict.regist, "注册短信"),
+    REGISTSER(1, DataDict.register, "注册短信"),
 
     LOGIN(2, DataDict.login, "登陆短信"),
 
@@ -22,6 +23,15 @@ public enum MsgSendEnum {
         this.index = index;
         this.code = code;
         this.desc = desc;
+    }
+
+    public static final MsgSendEnum getEnumByIndex(int index) {
+        for (MsgSendEnum msgSendEnum : MsgSendEnum.values()) {
+            if (msgSendEnum.index == index) {
+                return msgSendEnum;
+            }
+        }
+        throw new BizException("错误的短信类型！");
     }
 
     public int getIndex() {
