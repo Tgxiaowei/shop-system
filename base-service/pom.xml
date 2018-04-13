@@ -28,24 +28,33 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.4.5</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+		<!-- @MpperScan等 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.3.1</version>
 		</dependency>
 		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<!-- <version>5.0.5.RELEASE</version> -->
+		</dependency>
+
+		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 			<version>5.1.3</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.7</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
@@ -55,21 +64,16 @@
 			<artifactId>jedis</artifactId>
 			<!-- <version>2.1.0</version> -->
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>1.2.47</version>
 		</dependency>
-
-
-
-		<!-- https://mvnrepository.com/artifact/tk.mybatis/mapper -->
 		<dependency>
 			<groupId>tk.mybatis</groupId>
 			<artifactId>mapper</artifactId>
-			<version>3.2.2</version>
-			<!-- <version>4.0.0</version> -->
+			<!-- <version>3.2.2</version> -->
+			<version>4.0.0</version>
 		</dependency>
 
 		<dependency>
@@ -79,10 +83,33 @@
 			<scope>test</scope>
 		</dependency>
 
+
+		<!-- spring框架类依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<!-- <version>1.5.2.RELEASE</version> -->
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka-server</artifactId>
 		</dependency>
+		<!-- 加上spring-cloud-starter-config，才能读取config服务里面的配置， 不要问为什么，我TM也不知道 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- <version>1.5.9.RELEASE</version> -->
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<!-- <version>4.3.14.RELEASE</version> -->
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
