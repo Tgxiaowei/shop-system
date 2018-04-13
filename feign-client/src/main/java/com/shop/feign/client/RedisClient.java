@@ -2,6 +2,7 @@ package com.shop.feign.client;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shop.base.constant.ApiUrlConstant;
 
@@ -9,16 +10,18 @@ import com.shop.base.constant.ApiUrlConstant;
 public interface RedisClient {
 
     @PostMapping("/set")
-    void set(String key, Object value);
+    void set(@RequestParam(value = "key") String key, @RequestParam(value = "value") Object value);
 
     @PostMapping("/setex")
-    void setex(String key, int seconds, Object value);
+    void setex(@RequestParam(value = "key") String key,
+               @RequestParam(value = "seconds") int seconds,
+               @RequestParam(value = "value") Object value);
 
     @PostMapping("/get")
     String get(String key);
 
     @PostMapping("/getObj")
-    <T> T getObj(String key, T t);
+    <T> T getObj(@RequestParam(value = "key") String key, @RequestParam(value = "t") T t);
 
     @PostMapping("/del")
     void del(String key);
@@ -30,5 +33,6 @@ public interface RedisClient {
     long ttl(String key);
 
     @PostMapping("/expire")
-    long expire(String key, int seconds);
+    long expire(@RequestParam(value = "key") String key,
+                @RequestParam(value = "seconds") int seconds);
 }

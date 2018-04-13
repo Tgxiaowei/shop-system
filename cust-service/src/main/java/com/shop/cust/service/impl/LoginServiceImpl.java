@@ -108,6 +108,24 @@ public class LoginServiceImpl implements LoginService {
         return true;
     }
 
+    @Override
+    public String feignSendMsgCode(String mobile, int type) {
+
+        // 校验
+        CustDAO cust = custService.selectCustByMobile(mobile);
+        if (type == MsgSendEnum.REGISTSER.getIndex()) {
+            Assert.isNull(cust, "客户已注册！");
+        } else {
+            Assert.notNull(cust, "客户不存在！");
+            Assert.isTrue(cust.getStatus() == CustStatusEnum.NORMAL.getIndex(), "非法状态！");
+        }
+        String code = "1234";
+        String cacheKey = getMsgCacheKey(mobile, MsgSendEnum.getEnumByIndex(type));
+        redisClient.setex(cacheKey, msgExpiry, code);
+
+        return code;
+    }
+
     /**
      * 校验短信验证码
      */

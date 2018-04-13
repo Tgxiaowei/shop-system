@@ -52,6 +52,12 @@ public class LoginController {
         return Result.success(resp);
     }
 
+    @RequestMapping(value = "/feignSendMsg")
+    public Result<Boolean> feignSendMsgCode(String mobile, int type) {
+        redisClient.set("key", "value");
+        return Result.success(true);
+    }
+
     @GetMapping("/set")
     public boolean set() {
         redisClient.set("key", "value");

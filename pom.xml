@@ -10,7 +10,7 @@
 	
 	<modules>
 		<module>base-service</module>
-		<module>regist-service</module>
+		<module>register-service</module>
 		<module>config-service</module>
 		<module>feign-client</module>
 		<module>cust-service</module>
