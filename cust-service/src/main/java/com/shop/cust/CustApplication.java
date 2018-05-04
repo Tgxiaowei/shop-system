@@ -10,8 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableEurekaClient
 @ComponentScan(basePackages = "com.shop")
 @EnableFeignClients(basePackages = "com.shop.feign.client")
-// 扫描Mapper相关
-// @MapperScan(basePackages = "com.shop.cust.mapper")
+//@MapperScan(basePackages = "com.shop.cust.mapper")
 public class CustApplication {
 
     public static void main(String[] args) {

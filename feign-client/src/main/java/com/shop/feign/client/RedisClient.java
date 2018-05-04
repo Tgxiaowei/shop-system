@@ -9,30 +9,30 @@ import com.shop.base.constant.ApiUrlConstant;
 @FeignClient(value = ApiUrlConstant.REDIS)
 public interface RedisClient {
 
-    @PostMapping("/set")
+    @PostMapping("/redis/set")
     void set(@RequestParam(value = "key") String key, @RequestParam(value = "value") Object value);
 
-    @PostMapping("/setex")
+    @PostMapping("/redis/setex")
     void setex(@RequestParam(value = "key") String key,
                @RequestParam(value = "seconds") int seconds,
                @RequestParam(value = "value") Object value);
 
-    @PostMapping("/get")
-    String get(String key);
+    @PostMapping("/redis/get")
+    String get(@RequestParam(value = "key") String key);
 
-    @PostMapping("/getObj")
+    @PostMapping("/redis/getObj")
     <T> T getObj(@RequestParam(value = "key") String key, @RequestParam(value = "t") T t);
 
-    @PostMapping("/del")
-    void del(String key);
+    @PostMapping("/redis/del")
+    void del(@RequestParam(value = "key") String key);
 
-    @PostMapping("/exists")
-    boolean exists(String key);
+    @PostMapping("/redis/exists")
+    boolean exists(@RequestParam(value = "key") String key);
 
-    @PostMapping("/ttl")
-    long ttl(String key);
+    @PostMapping("/redis/ttl")
+    long ttl(@RequestParam(value = "key") String key);
 
-    @PostMapping("/expire")
+    @PostMapping("/redis/expire")
     long expire(@RequestParam(value = "key") String key,
                 @RequestParam(value = "seconds") int seconds);
 }

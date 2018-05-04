@@ -3,7 +3,6 @@ package com.shop.cust.dao;
 import java.util.Date;
 
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,7 +15,8 @@ public class CustDAO extends BaseDAO {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "JDBC")
     private Long              id;
     /** 客户号 */
     private String            custNo;
@@ -32,7 +32,7 @@ public class CustDAO extends BaseDAO {
     /** 交易密码 */
     private String            payPsw;
     /** 邮箱 */
-    private String            mail;
+    private String            email;
     /** 客户状态 */
     private Integer           status;
     private Date              gmt_create;
@@ -78,12 +78,12 @@ public class CustDAO extends BaseDAO {
         this.sex = sex;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getStatus() {
@@ -129,8 +129,8 @@ public class CustDAO extends BaseDAO {
     @Override
     public String toString() {
         return "CustDAO [id=" + id + ", custNo=" + custNo + ", mobile=" + mobile + ", name=" + name
-               + ", sex=" + sex + ", loginPsw=" + loginPsw + ", payPsw=" + payPsw + ", mail="
-               + mail + ", status=" + status + ", gmt_create=" + gmt_create + ", gmt_modified="
+               + ", sex=" + sex + ", loginPsw=" + loginPsw + ", payPsw=" + payPsw + ", email="
+               + email + ", status=" + status + ", gmt_create=" + gmt_create + ", gmt_modified="
                + gmt_modified + "]";
     }
 

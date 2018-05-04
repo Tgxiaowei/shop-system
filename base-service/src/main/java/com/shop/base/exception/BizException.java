@@ -10,15 +10,18 @@ public class BizException extends RuntimeException {
     private String            desc;
 
     public BizException(ReturnCodeEnum ret) {
+        super(ret.getDesc());
         this.code = ret.getCode();
         this.desc = ret.getDesc();
     }
 
     public BizException(String desc) {
+        super(desc);
         this.desc = desc;
     }
 
     public BizException(String code, String desc) {
+        super(desc);
         this.code = code;
         this.desc = desc;
     }

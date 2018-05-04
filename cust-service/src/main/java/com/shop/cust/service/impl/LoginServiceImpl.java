@@ -57,6 +57,7 @@ public class LoginServiceImpl implements LoginService {
         Assert.isNull(cust, "手机号码已注册！");
 
         cust = new CustDAO();
+        cust.setCustNo(UUIDUtil.getUUID());
         cust.setMobile(mobile);
         cust.setLoginPsw(DigestUtils.md5Hex(psw));
         cust.setStatus(CustStatusEnum.NORMAL.getIndex());
@@ -76,7 +77,7 @@ public class LoginServiceImpl implements LoginService {
         Assert.notNull(cust, "客户不存在！");
 
         if (StringUtils.isNotBlank(psw)) {
-            Assert.equals(psw, DigestUtils.md5Hex(psw), "密码错误！");
+            Assert.equals(cust.getLoginPsw(), DigestUtils.md5Hex(psw), "密码错误！");
         } else if (StringUtils.isNotBlank(req.getMsgCode())) {
             validMsgCode(mobile, msgCode, MsgSendEnum.LOGIN);
         } else {
@@ -133,9 +134,9 @@ public class LoginServiceImpl implements LoginService {
 
         String cacheKey = getMsgCacheKey(mobile, msgSendEnum);
         String cacheMsgCode = redisClient.get(cacheKey);
-        redisClient.del(cacheKey);
 
         Assert.isTrue(StringUtils.isNotEmpty(cacheMsgCode), "短信验证码已失效！");
+        redisClient.del(cacheKey);
         Assert.isTrue(StringUtils.equals(cacheMsgCode, code), "短信验证码错误！");
     }
 

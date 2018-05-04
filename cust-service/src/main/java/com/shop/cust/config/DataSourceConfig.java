@@ -19,8 +19,7 @@ import com.alibaba.druid.support.http.WebStatFilter;
 
 /**
  * 数据库配置信息
- * @author zenghua
- * 
+ * @author xiaowei
  * 1.可以配置多个数据源或者动态数据源进行数据库负载均衡策略，待改进。
  */
 @Configuration
