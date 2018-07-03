@@ -1,10 +1,10 @@
 package com.shop.cust.dto.req;
 
-import java.io.Serializable;
-
 import javax.validation.constraints.NotNull;
 
-public class RegisterReq implements Serializable {
+import com.shop.base.dto.BaseDTO;
+
+public class RegisterReq extends BaseDTO {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,12 +47,6 @@ public class RegisterReq implements Serializable {
 
     public void setPswRept(String pswRept) {
         this.pswRept = pswRept;
-    }
-
-    @Override
-    public String toString() {
-        return "RegisterReq [mobile=" + mobile + ", msgCode=" + msgCode + ", psw=" + psw
-               + ", pswRept=" + pswRept + "]";
     }
 
 }

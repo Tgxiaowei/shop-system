@@ -126,12 +126,4 @@ public class CustDAO extends BaseDAO {
         this.payPsw = payPsw;
     }
 
-    @Override
-    public String toString() {
-        return "CustDAO [id=" + id + ", custNo=" + custNo + ", mobile=" + mobile + ", name=" + name
-               + ", sex=" + sex + ", loginPsw=" + loginPsw + ", payPsw=" + payPsw + ", email="
-               + email + ", status=" + status + ", gmt_create=" + gmt_create + ", gmt_modified="
-               + gmt_modified + "]";
-    }
-
 }

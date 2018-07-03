@@ -1,12 +1,12 @@
 package com.shop.cust.dto.req;
 
-import java.io.Serializable;
+import com.shop.base.dto.BaseDTO;
 
 /**
  * 短信发送请求
  * @author xiaowei 2018年4月3日 下午4:29:02
  */
-public class MsgSendReq implements Serializable {
+public class MsgSendReq extends BaseDTO {
 
     private static final long serialVersionUID = 1L;
     private String            mobile;
@@ -53,12 +53,6 @@ public class MsgSendReq implements Serializable {
 
     public void setMsgType(String msgType) {
         this.msgType = msgType;
-    }
-
-    @Override
-    public String toString() {
-        return "MsgSendReq [mobile=" + mobile + ", token=" + token + ", picId=" + picId
-               + ", picCode=" + picCode + ", msgType=" + msgType + "]";
     }
 
 }

@@ -1,14 +1,14 @@
 package com.shop.cust.dto.req;
 
-import java.io.Serializable;
-
 import javax.validation.constraints.NotNull;
+
+import com.shop.base.dto.BaseDTO;
 
 /**
  * 登陆请求对象
  * @author xiaowei 2018年4月2日 上午10:31:52
  */
-public class LoginReq implements Serializable {
+public class LoginReq extends BaseDTO {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,11 +47,6 @@ public class LoginReq implements Serializable {
 
     public void setMsgCode(String msgCode) {
         this.msgCode = msgCode;
-    }
-
-    @Override
-    public String toString() {
-        return "LoginReq [mobile=" + mobile + ", psw=" + psw + ", msgCode=" + msgCode + "]";
     }
 
 }

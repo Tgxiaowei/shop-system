@@ -2,6 +2,8 @@ package com.shop.base.dto;
 
 import java.io.Serializable;
 
+import com.alibaba.fastjson.JSON;
+
 /**
  * BaseDTO，提供默认的分页属性
  * @author xiaowei 2018年3月30日 下午5:47:33
@@ -32,7 +34,7 @@ public class BaseDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "BaseDTO [pageNum=" + pageNum + ", pageSize=" + pageSize + "]";
+        return JSON.toJSONString(this);
     }
 
 }

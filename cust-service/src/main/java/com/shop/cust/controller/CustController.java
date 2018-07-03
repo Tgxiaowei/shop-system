@@ -19,7 +19,7 @@ public class CustController extends BaseController {
 
     @GetMapping("/test")
     public Result<CustDAO> login() {
-        return Result.success(custService.selectCustByMobile("13588795912"));
+        return Result.ok(custService.selectCustByMobile("13588795912"));
     }
 
 }

@@ -2,6 +2,7 @@ package com.shop.base.dto;
 
 import java.io.Serializable;
 
+import com.alibaba.fastjson.JSON;
 import com.shop.base.enums.ReturnCodeEnum;
 
 public class Result<T> implements Serializable {
@@ -36,7 +37,7 @@ public class Result<T> implements Serializable {
         this.data = data;
     }
 
-    public static <T> Result<T> success(T data) {
+    public static <T> Result<T> ok(T data) {
         return new Result<>(data);
     }
 
@@ -70,7 +71,7 @@ public class Result<T> implements Serializable {
 
     @Override
     public String toString() {
-        return "Result [code=" + code + ", desc=" + desc + ", data=" + data + "]";
+        return JSON.toJSONString(this);
     }
 
 }

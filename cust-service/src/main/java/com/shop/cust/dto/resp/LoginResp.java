@@ -1,8 +1,8 @@
 package com.shop.cust.dto.resp;
 
-import java.io.Serializable;
+import com.shop.base.dto.BaseDTO;
 
-public class LoginResp implements Serializable {
+public class LoginResp extends BaseDTO {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,11 +32,6 @@ public class LoginResp implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "LoginResp [token=" + token + ", name=" + name + "]";
     }
 
 }

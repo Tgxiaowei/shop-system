@@ -39,7 +39,7 @@ public class LoginController {
         LoginResp resp = loginService.register(req);
         logger.info("客户{}注册结果，resp={}", req.getMobile(), resp);
 
-        return Result.success(resp);
+        return Result.ok(resp);
     }
 
     @PostMapping("/login")
@@ -49,13 +49,13 @@ public class LoginController {
         LoginResp resp = loginService.login(req);
         logger.info("客户{}登陆结果，resp={}", req.getMobile(), resp);
 
-        return Result.success(resp);
+        return Result.ok(resp);
     }
 
     @RequestMapping(value = "/feignSendMsg")
     public Result<String> feignSendMsgCode(String mobile, int type) {
         String code = loginService.feignSendMsgCode(mobile, type);
-        return Result.success(code);
+        return Result.ok(code);
     }
 
     @GetMapping("/set")

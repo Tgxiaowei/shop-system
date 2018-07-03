@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Transient;
 
+import com.alibaba.fastjson.JSON;
+
 /**
  * BaseDAO
  * @author xiaowei 2018年3月30日 下午5:44:47
@@ -35,6 +37,6 @@ public class BaseDAO implements Serializable {
 
     @Override
     public String toString() {
-        return "BaseDAO [pageNum=" + pageNum + ", pageSize=" + pageSize + "]";
+        return JSON.toJSONString(this);
     }
 }
