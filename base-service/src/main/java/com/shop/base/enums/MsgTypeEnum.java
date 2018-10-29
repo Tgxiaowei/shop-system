@@ -3,15 +3,15 @@ package com.shop.base.enums;
 import com.shop.base.constant.DataDict;
 import com.shop.base.exception.BizException;
 
-public enum MsgSendEnum {
+public enum MsgTypeEnum {
 
-    REGISTSER(1, DataDict.register, "注册短信"),
+    REGISTSER(1, DataDict.REGISTER, "注册短信"),
 
-    LOGIN(2, DataDict.login, "登陆短信"),
+    LOGIN(2, DataDict.LOGIN, "登陆短信"),
 
-    RESET_LOGIN_PSW(3, DataDict.resetLoginPsw, "重置登录密码短信"),
+    RESET_LOGIN_PSW(3, DataDict.RESET_LOGIN_PSW, "重置登录密码短信"),
 
-    RESET_PAY_PSW(4, DataDict.resetPayPsw, "重置交易密码短信"),
+    RESET_PAY_PSW(4, DataDict.RESET_PAY_PSW, "重置交易密码短信"),
 
     ;
 
@@ -19,16 +19,16 @@ public enum MsgSendEnum {
     private String code;
     private String desc;
 
-    private MsgSendEnum(int index, String code, String desc) {
+    private MsgTypeEnum(int index, String code, String desc) {
         this.index = index;
         this.code = code;
         this.desc = desc;
     }
 
-    public static final MsgSendEnum getEnumByIndex(int index) {
-        for (MsgSendEnum msgSendEnum : MsgSendEnum.values()) {
-            if (msgSendEnum.index == index) {
-                return msgSendEnum;
+    public static final MsgTypeEnum getEnumByIndex(int index) {
+        for (MsgTypeEnum msgTypeEnum : MsgTypeEnum.values()) {
+            if (msgTypeEnum.index == index) {
+                return msgTypeEnum;
             }
         }
         throw new BizException("错误的短信类型！");

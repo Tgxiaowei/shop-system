@@ -2,10 +2,10 @@ package com.shop.base.constant;
 
 public class DataDict {
 
-    public static final String token         = "token";
-    public static final String register      = "register";
-    public static final String login         = "login";
-    public static final String resetLoginPsw = "resetLoginPsw";
-    public static final String resetPayPsw   = "resetPayPsw";
+    public static final String TOKEN         = "token";
+    public static final String REGISTER      = "register";
+    public static final String LOGIN         = "login";
+    public static final String RESET_LOGIN_PSW = "resetLoginPsw";
+    public static final String RESET_PAY_PSW   = "resetPayPsw";
 
 }
