@@ -12,12 +12,13 @@ public class BaseDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    // 默认不分页
     public Integer            pageNum;
 
     public Integer            pageSize;
 
     public Integer getPageNum() {
-        return this.pageNum = pageNum == null || pageNum == 0 ? 10 : pageNum;
+        return this.pageNum = pageNum == null || pageNum == 0 ? 1 : pageNum;
     }
 
     public void setPageNum(Integer pageNum) {
@@ -25,7 +26,7 @@ public class BaseDTO implements Serializable {
     }
 
     public Integer getPageSize() {
-        return pageSize == null || pageSize == 0 ? 1 : pageSize;
+        return pageSize == null || pageSize == 0 ? Integer.MAX_VALUE : pageSize;
     }
 
     public void setPageSize(Integer pageSize) {

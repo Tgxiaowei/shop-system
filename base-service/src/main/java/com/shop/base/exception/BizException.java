@@ -1,5 +1,6 @@
 package com.shop.base.exception;
 
+import com.alibaba.fastjson.JSON;
 import com.shop.base.enums.ReturnCodeEnum;
 
 public class BizException extends RuntimeException {
@@ -44,7 +45,7 @@ public class BizException extends RuntimeException {
 
     @Override
     public String toString() {
-        return "BizException [code=" + code + ", desc=" + desc + "]";
+        return JSON.toJSONString(this);
     }
 
 }

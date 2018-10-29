@@ -21,8 +21,4 @@ public interface LoginService {
      */
     boolean sendMsg(String mobile, int type);
 
-    /**
-     * 假装发送短信验证码
-     */
-    String feignSendMsgCode(String mobile, int type);
 }

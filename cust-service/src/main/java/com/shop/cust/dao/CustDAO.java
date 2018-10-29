@@ -8,6 +8,7 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.shop.base.dao.BaseDAO;
 
 @Table(name = "t_cust_customer")
@@ -35,8 +36,10 @@ public class CustDAO extends BaseDAO {
     private String            email;
     /** 客户状态 */
     private Integer           status;
-    private Date              gmt_create;
-    private Date              gmt_modified;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date              gmtCreate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date              gmtModified;
 
     public Long getId() {
         return id;
@@ -94,20 +97,20 @@ public class CustDAO extends BaseDAO {
         this.status = status;
     }
 
-    public Date getGmt_create() {
-        return gmt_create;
+    public Date getGmtCreate() {
+        return gmtCreate;
     }
 
-    public void setGmt_create(Date gmt_create) {
-        this.gmt_create = gmt_create;
+    public void setGmtCreate(Date gmtCreate) {
+        this.gmtCreate = gmtCreate;
     }
 
-    public Date getGmt_modified() {
-        return gmt_modified;
+    public Date getGmtModified() {
+        return gmtModified;
     }
 
-    public void setGmt_modified(Date gmt_modified) {
-        this.gmt_modified = gmt_modified;
+    public void setGmtModified(Date gmtModified) {
+        this.gmtModified = gmtModified;
     }
 
     public String getLoginPsw() {

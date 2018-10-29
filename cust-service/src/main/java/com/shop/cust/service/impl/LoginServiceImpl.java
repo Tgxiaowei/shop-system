@@ -39,12 +39,14 @@ public class LoginServiceImpl implements LoginService {
     private CustService   custService;
     @Value("${login.token.expiry}")
     private int           loginExpiry;
-    @Value("${msg.code.expiry}")
-    private int           msgExpiry;
+    @Value("${mock.flage}")
+    private int           mockFlage;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public LoginResp register(RegisterReq req) {
+
+        registerParamCheck(req);
 
         String mobile = req.getMobile();
         String psw = req.getPsw();
@@ -61,7 +63,7 @@ public class LoginServiceImpl implements LoginService {
         cust.setMobile(mobile);
         cust.setLoginPsw(DigestUtils.md5Hex(psw));
         cust.setStatus(CustStatusEnum.NORMAL.getIndex());
-        cust.setGmt_create(new Date());
+        cust.setGmtCreate(new Date());
         custMapper.insert(cust);
 
         return login(new LoginReq(mobile, psw));
@@ -69,6 +71,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public LoginResp login(LoginReq req) {
+
+        Assert.notNull(req, "参数为空");
+        Assert.notBlank(req.getMobile(), "手机号为空");
 
         String mobile = req.getMobile();
         String psw = req.getPsw();
@@ -79,6 +84,7 @@ public class LoginServiceImpl implements LoginService {
         if (StringUtils.isNotBlank(psw)) {
             Assert.equals(cust.getLoginPsw(), DigestUtils.md5Hex(psw), "密码错误！");
         } else if (StringUtils.isNotBlank(req.getMsgCode())) {
+            Assert.notBlank(msgCode, "密码为空！");
             validMsgCode(mobile, msgCode, MsgTypeEnum.LOGIN);
         } else {
             logger.error("非法登陆请求！req={}", req);
@@ -100,63 +106,38 @@ public class LoginServiceImpl implements LoginService {
             Assert.notNull(cust, "客户不存在！");
             Assert.isTrue(cust.getStatus() == CustStatusEnum.NORMAL.getIndex(), "非法状态！");
         }
-        // TODO 生成短信验证码
-        String code = "";
-        // TODO 发送短信验证码成功后，塞缓存
-        String cacheKey = getMsgCacheKey(mobile, MsgTypeEnum.getEnumByIndex(type));
-        redisClient.setex(cacheKey, msgExpiry, code);
+        // 测试mock
+        if ("1".equals(mockFlage))
+            return true;
 
+        // TODO 调用短信发送渠道(短信验证码由渠道生成)
         return true;
     }
 
-    @Override
-    public String feignSendMsgCode(String mobile, int type) {
+    /**
+     * 注册参数校验
+     */
+    private void registerParamCheck(RegisterReq req) {
 
-        // 校验
-        CustDAO cust = custService.selectCustByMobile(mobile);
-        if (type == MsgTypeEnum.REGISTSER.getIndex()) {
-            Assert.isNull(cust, "客户已注册！");
-        } else {
-            Assert.notNull(cust, "客户不存在！");
-            Assert.isTrue(cust.getStatus() == CustStatusEnum.NORMAL.getIndex(), "非法状态！");
-        }
-        String code = "1234";
-        String cacheKey = getMsgCacheKey(mobile, MsgTypeEnum.getEnumByIndex(type));
-        redisClient.setex(cacheKey, msgExpiry, code);
+        Assert.notNull(req, "参数缺失");
+        Assert.notBlank(req.getMobile(), "手机号为空！");
+        Assert.notBlank(req.getMsgCode(), "短信验证码为空！");
+        Assert.notBlank(req.getPsw(), "密码为空！");
+        Assert.notBlank(req.getPswRept(), "密码为空！");
 
-        return code;
     }
 
     /**
      * 校验短信验证码
      */
-    private void validMsgCode(String mobile, String code, MsgTypeEnum msgSendEnum) {
+    private void validMsgCode(String mobile, String msgCode, MsgTypeEnum msgTypeEnum) {
 
-        String cacheKey = getMsgCacheKey(mobile, msgSendEnum);
-        String cacheMsgCode = redisClient.get(cacheKey);
+        // 测试mock
+        if (mockFlage == 1 && StringUtils.equals(msgCode, "8888"))
+            return;
 
-        Assert.isTrue(StringUtils.isNotEmpty(cacheMsgCode), "短信验证码已失效！");
-        redisClient.del(cacheKey);
-        Assert.isTrue(StringUtils.equals(cacheMsgCode, code), "短信验证码错误！");
-    }
-
-    /**
-     * 获取短信验证码缓存key
-     */
-    private String getMsgCacheKey(String mobile, MsgTypeEnum msgSendEnum) {
-
-        switch (msgSendEnum) {
-            case REGISTSER:
-                return CacheKeyConstant.REGIST_MSG + mobile;
-            case LOGIN:
-                return CacheKeyConstant.LOGIN_MSG + mobile;
-            case RESET_LOGIN_PSW:
-                return CacheKeyConstant.RESET_LOGIN_PSW + mobile;
-            case RESET_PAY_PSW:
-                return CacheKeyConstant.RESET_PAY_PSW + mobile;
-            default:
-                throw new BizException("错误的短信类型！");
-        }
+        // TODO 调用短信渠道校验短信验证码，校验不通过直接抛出异常
+        throw new BizException("验证码错误！");
     }
 
 }

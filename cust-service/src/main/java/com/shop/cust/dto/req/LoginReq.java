@@ -1,7 +1,5 @@
 package com.shop.cust.dto.req;
 
-import javax.validation.constraints.NotNull;
-
 import com.shop.base.dto.BaseDTO;
 
 /**
@@ -12,7 +10,6 @@ public class LoginReq extends BaseDTO {
 
     private static final long serialVersionUID = 1L;
 
-    @NotNull(message = "手机号不能为空！")
     private String            mobile;
     private String            psw;
     private String            msgCode;

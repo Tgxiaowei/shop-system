@@ -92,6 +92,15 @@ public class Assert {
     }
 
     /**
+     * str不为null且不为""，否则抛出BizException
+     */
+    public static void notBlank(String str, String message) {
+        if (str == null || str.length() == 0) {
+            throw new BizException(message);
+        }
+    }
+
+    /**
      * text不为null且长度>0，否则抛出BizException
      */
     public static void hasLength(String text, String code, String message) {
