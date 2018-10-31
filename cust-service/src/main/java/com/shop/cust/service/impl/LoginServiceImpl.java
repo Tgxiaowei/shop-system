@@ -21,7 +21,6 @@ import com.shop.cust.dao.CustDAO;
 import com.shop.cust.dto.req.LoginReq;
 import com.shop.cust.dto.req.RegisterReq;
 import com.shop.cust.dto.resp.LoginResp;
-import com.shop.cust.mapper.CustMapper;
 import com.shop.cust.service.CustService;
 import com.shop.cust.service.LoginService;
 import com.shop.feign.client.RedisClient;
@@ -33,8 +32,6 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private RedisClient   redisClient;
-    @Autowired
-    private CustMapper    custMapper;
     @Autowired
     private CustService   custService;
     @Value("${login.token.expiry}")
@@ -64,7 +61,7 @@ public class LoginServiceImpl implements LoginService {
         cust.setLoginPsw(DigestUtils.md5Hex(psw));
         cust.setStatus(CustStatusEnum.NORMAL.getIndex());
         cust.setGmtCreate(new Date());
-        custMapper.insert(cust);
+        custService.insertCust(cust);
 
         return login(new LoginReq(mobile, psw));
     }

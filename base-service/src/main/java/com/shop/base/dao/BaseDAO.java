@@ -19,11 +19,11 @@ public class BaseDAO implements Serializable {
     @Transient
     private Integer           pageSize;
 
-    public int getPageNum() {
+    public Integer getPageNum() {
         return pageNum;
     }
 
-    public void setPageNum(int pageNum) {
+    public void setPageNum(Integer pageNum) {
         this.pageNum = pageNum;
     }
 

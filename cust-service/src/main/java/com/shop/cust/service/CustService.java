@@ -6,4 +6,6 @@ public interface CustService {
 
     CustDAO selectCustByMobile(String mobile);
 
+    boolean insertCust(CustDAO custDAO);
+
 }

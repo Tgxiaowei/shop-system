@@ -21,7 +21,7 @@ public class LoginServiceTest {
 
     @Test
     @Transactional
-    public void testRepayHuaBei() {
+    public void testRegister() {
         RegisterReq req = new RegisterReq();
         req.setMobile("13555555555");
         req.setMsgCode("8888");
