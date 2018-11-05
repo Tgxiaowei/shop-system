@@ -3,10 +3,6 @@ package com.shop.base.util;
 import java.util.Collection;
 import java.util.Map;
 
-import org.springframework.util.CollectionUtils;
-import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
-
 import com.shop.base.exception.BizException;
 
 /**
@@ -83,15 +79,6 @@ public class Assert {
     }
 
     /**
-     * text不为null且长度>0，否则抛出BizException
-     */
-    public static void hasLength(String text, String message) {
-        if (!StringUtils.hasLength(text)) {
-            throw new BizException(message);
-        }
-    }
-
-    /**
      * str不为null且不为""，否则抛出BizException
      */
     public static void notBlank(String str, String message) {
@@ -103,8 +90,17 @@ public class Assert {
     /**
      * text不为null且长度>0，否则抛出BizException
      */
+    public static void hasLength(String text, String message) {
+        if (text == null || text.length() == 0) {
+            throw new BizException(message);
+        }
+    }
+
+    /**
+     * text不为null且长度>0，否则抛出BizException
+     */
     public static void hasLength(String text, String code, String message) {
-        if (!StringUtils.hasLength(text)) {
+        if (text == null || text.length() == 0) {
             throw new BizException(code, message);
         }
     }
@@ -113,7 +109,7 @@ public class Assert {
      * array至少包含一个元素，否则抛出BizException
      */
     public static void notEmpty(String str, String message) {
-        if (StringUtils.isEmpty(str)) {
+        if (str == null || str.length() == 0) {
             throw new BizException(message);
         }
     }
@@ -122,7 +118,7 @@ public class Assert {
      * array至少包含一个元素，否则抛出BizException
      */
     public static void notEmpty(Object[] array, String message) {
-        if (ObjectUtils.isEmpty(array)) {
+        if (array == null || array.length == 0) {
             throw new BizException(message);
         }
     }
@@ -131,7 +127,7 @@ public class Assert {
      * array至少包含一个元素，否则抛出BizException
      */
     public static void notEmpty(Object[] array, String code, String message) {
-        if (ObjectUtils.isEmpty(array)) {
+        if (array == null || array.length == 0) {
             throw new BizException(code, message);
         }
     }
@@ -140,7 +136,7 @@ public class Assert {
      * collection至少包含一个元素，否则抛出BizException
      */
     public static void notEmpty(Collection<?> collection, String message) {
-        if (CollectionUtils.isEmpty(collection)) {
+        if (collection == null || collection.isEmpty()) {
             throw new BizException(message);
         }
     }
@@ -149,7 +145,7 @@ public class Assert {
      * collection至少包含一个元素，否则抛出BizException
      */
     public static void notEmpty(Collection<?> collection, String code, String message) {
-        if (CollectionUtils.isEmpty(collection)) {
+        if (collection == null || collection.isEmpty()) {
             throw new BizException(code, message);
         }
     }
@@ -158,7 +154,7 @@ public class Assert {
      * map至少包含一个元素，否则抛出BizException
      */
     public static void notEmpty(Map<?, ?> map, String message) {
-        if (CollectionUtils.isEmpty(map)) {
+        if (map == null || map.isEmpty()) {
             throw new BizException(message);
         }
     }
@@ -167,7 +163,7 @@ public class Assert {
      * map至少包含一个元素，否则抛出BizException
      */
     public static void notEmpty(Map<?, ?> map, String code, String message) {
-        if (CollectionUtils.isEmpty(map)) {
+        if (map == null || map.isEmpty()) {
             throw new BizException(code, message);
         }
     }

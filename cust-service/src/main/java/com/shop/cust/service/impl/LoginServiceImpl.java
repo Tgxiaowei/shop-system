@@ -37,7 +37,7 @@ public class LoginServiceImpl implements LoginService {
     @Value("${login.token.expiry}")
     private int           loginExpiry;
     @Value("${mock.flage}")
-    private int           mockFlage;
+    private int           mockFlag;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -104,7 +104,7 @@ public class LoginServiceImpl implements LoginService {
             Assert.isTrue(cust.getStatus() == CustStatusEnum.NORMAL.getIndex(), "非法状态！");
         }
         // 测试mock
-        if ("1".equals(mockFlage))
+        if ("1".equals(mockFlag))
             return true;
 
         // TODO 调用短信发送渠道(短信验证码由渠道生成)
@@ -130,7 +130,7 @@ public class LoginServiceImpl implements LoginService {
     private void validMsgCode(String mobile, String msgCode, MsgTypeEnum msgTypeEnum) {
 
         // 测试mock
-        if (mockFlage == 1 && StringUtils.equals(msgCode, "8888"))
+        if (mockFlag == 1 && StringUtils.equals(msgCode, "8888"))
             return;
 
         // TODO 调用短信渠道校验短信验证码，校验不通过直接抛出异常
