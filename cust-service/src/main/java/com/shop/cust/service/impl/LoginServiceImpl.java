@@ -36,7 +36,7 @@ public class LoginServiceImpl implements LoginService {
     private CustService   custService;
     @Value("${login.token.expiry}")
     private int           loginExpiry;
-    @Value("${mock.flage}")
+    @Value("${mock.flag}")
     private int           mockFlag;
 
     @Override
