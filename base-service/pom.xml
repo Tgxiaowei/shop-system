@@ -50,6 +50,10 @@
 			<artifactId>druid</artifactId>
 			<version>1.1.9</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
 		<!-- 数据库连接，com.mysql.jdbc.Driver -->
 		<dependency>
 			<groupId>mysql</groupId>
